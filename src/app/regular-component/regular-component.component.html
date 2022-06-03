@@ -1,0 +1,147 @@
+<h1>Hello Angular {{ title }}</h1>
+<h1>{{ myname }}</h1>
+<h1>2 + 2</h1>
+<h1>{{ 2 + 2 }}</h1>
+<app-regular-component></app-regular-component>
+<app-inline-user></app-inline-user>
+<app-template-user></app-template-user>
+<app-login></app-login>
+
+<!-- function -->
+
+<p>Angular function</p>
+
+<button type="button" (click)="getBtn()">Click Now</button>
+
+<!-- events function -->
+
+<h1>Call function with diffrent events in Angular</h1>
+
+<button type="button" (click)="getDataconsole()">Click to console</button>
+
+<div class="angular-event-functions">
+  <h3><b>keyup</b> event</h3>
+  <form>
+    <input
+      type="text"
+      #box
+      (keyup)="getData(box.value)"
+      placeholder="event keyup"
+    />
+  </form>
+
+  <h3><b>keydown</b> event</h3>
+  <form>
+    <input
+      type="text"
+      #box1
+      (keydown)="getData(box1.value)"
+      placeholder="event keyup"
+    />
+  </form>
+
+  <h3><b>blur</b> event</h3>
+  <form>
+    <input
+      type="text"
+      #box2
+      (blur)="getData(box2.value)"
+      placeholder="event keyup"
+    />
+  </form>
+</div>
+
+<h1>Get data form input field and print on screen</h1>
+<div>
+  <form>
+    <input type="text" #print1 placeholder="print name" />
+    <button type="button" (click)="getValue(print1.value)">Click</button>
+    <p>
+      Print the Input Name: <b>{{ displayValue }}</b>
+    </p>
+  </form>
+</div>
+
+<h1>Number counter</h1>
+
+<button type="button" (click)="counter('add')">+</button>
+<p>Count : {{ count }}</p>
+<button type="button" (click)="counter('minus')">-</button>
+
+<!-- if/else condition -->
+
+<h1>if/else condition:</h1>
+
+<!-- if the property is (show) true then 'if' part run, otherwise 'else' part run -->
+
+<h1 *ngIf="show; then ifBlock; else elseBlock"></h1>
+
+<ng-template #ifBlock>
+  <h3>Working on if condition</h3>
+</ng-template>
+
+<ng-template #elseBlock>
+  <h3>Working on else statement</h3>
+</ng-template>
+
+<!-- else if condition -->
+
+<h1>else if condition:</h1>
+
+<ng-template [ngIf]="color === 'red'">
+  <h3 style="color: red">Red color working</h3>
+</ng-template>
+
+<ng-template [ngIf]="color === 'green'">
+  <h3 style="color: green">Green color working</h3>
+</ng-template>
+
+<!-- <h1 *ngIf="color === 'red'" style="color: red">working red color</h1>
+
+<h1 *ngIf="color === 'green'" style="color: green">working green color</h1> -->
+
+<!-- swith case -->
+
+<h1>Switch case:</h1>
+
+<div [ngSwitch]="sky">
+  <h3 *ngSwitchCase="'red'" style="color: red">Switch color red</h3>
+  <h3 *ngSwitchCase="'blue'" style="color: skyblue">Switch blue color</h3>
+  <h3 *ngSwitchCase="'green'" style="color: green">Switch green color</h3>
+  <h3 *ngSwitchCase="'orange'" style="color: orange">Switch orange color</h3>
+  <h3 *ngSwitchDefault>Unknown color</h3>
+</div>
+
+<!-- for loop -->
+
+<h1>For loop:</h1>
+
+<h3 *ngFor="let data of user">Name is: {{ data }}</h3>
+
+<h3 *ngFor="let udata of userData">
+  Name:{{ udata.Name }} -- Age:{{ udata.Age }} -- {{ udata.Email }} --
+  {{ udata.Mobile }}
+</h3>
+
+<h1>Nested loop [nested Array/multi-dimensional array]</h1>
+
+<!-- <h3 *ngFor="let userNested of userNestedData">{{ userNested }}</h3> -->
+
+<ul *ngFor="let userNested of userNestedData">
+  <li>{{ userNested.user }}</li>
+  <li>{{ userNested.power }}</li>
+  <!-- <li>{{ userNested.socialMedia }}</li> -->
+  <ul *ngFor="let socialNested of userNested.socialMedia">
+    <li>{{ socialNested }}</li>
+  </ul>
+</ul>
+
+<!-- ṣtyle binding -->
+
+<h1>Style binding:</h1>
+
+<h3 [style.color]="updatecolor" [style.backgroundColor]="bgColor">
+  Style binding
+</h3>
+
+<button (click)="UpdateColorBtn()">Change color</button>
